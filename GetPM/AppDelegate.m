@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "GetPMViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    GetPMViewController *pmv = [[GetPMViewController alloc] init];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:pmv];
+    
+    [nc.navigationBar setBarTintColor:[UIColor blackColor]];
+    nc.navigationBar.titleTextAttributes = @{UITextAttributeTextColor: [UIColor whiteColor],UITextAttributeFont : [UIFont boldSystemFontOfSize:18]};
+    
+    self.window.rootViewController = nc;
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
